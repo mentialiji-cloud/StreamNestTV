@@ -1,4 +1,4 @@
-name: Build Android TV APK
+name: Build TV Shqip APK
 
 on:
   workflow_dispatch:
@@ -14,8 +14,8 @@ jobs:
       - name: Get project
         uses: actions/checkout@v4
 
-      - name: Unpack project
-        run: unzip -q StreamNestTV-v0.1-source.zip -d project
+      - name: Unpack TV Shqip project
+        run: unzip -q TV-Shqip-v0.2-source.zip -d project
 
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -28,12 +28,12 @@ jobs:
         with:
           gradle-version: "8.9"
 
-      - name: Build APK
+      - name: Build TV Shqip APK
         working-directory: project
-        run: gradle assembleDebug -Pkotlin.jvm.target.validation.mode=warning
+        run: gradle assembleDebug
 
-      - name: Save APK
+      - name: Save TV Shqip APK
         uses: actions/upload-artifact@v4
         with:
-          name: StreamNest-TV
+          name: TV-Shqip-v0.2
           path: project/app/build/outputs/apk/debug/app-debug.apk
