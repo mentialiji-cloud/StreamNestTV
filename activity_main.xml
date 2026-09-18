@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_app"
+    android:padding="18dp">
+
+    <LinearLayout
+        android:layout_width="230dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp">
+            <ImageView android:layout_width="52dp" android:layout_height="52dp" android:src="@drawable/app_icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Shqip TV"
+                android:textColor="@color/text"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/navLive"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_nav"
+            android:focusable="true"
+            android:gravity="start|center_vertical"
+            android:paddingHorizontal="22dp"
+            android:text="▣   Live TV"
+            android:textAllCaps="false"
+            android:textColor="@color/text"
+            android:textSize="19sp" />
+        <Button
+            android:id="@+id/navMovies"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_nav"
+            android:focusable="true"
+            android:gravity="start|center_vertical"
+            android:paddingHorizontal="22dp"
+            android:text="◉   Movies"
+            android:textAllCaps="false"
+            android:textColor="@color/text"
+            android:textSize="19sp" />
+        <Button
+            android:id="@+id/navSeries"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_nav"
+            android:focusable="true"
+            android:gravity="start|center_vertical"
+            android:paddingHorizontal="22dp"
+            android:text="▤   Series"
+            android:textAllCaps="false"
+            android:textColor="@color/text"
+            android:textSize="19sp" />
+        <Button
+            android:id="@+id/navFavorites"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_nav"
+            android:focusable="true"
+            android:gravity="start|center_vertical"
+            android:paddingHorizontal="22dp"
+            android:text="♡   Favorites"
+            android:textAllCaps="false"
+            android:textColor="@color/text"
+            android:textSize="19sp" />
+        <Button
+            android:id="@+id/navSettings"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_nav"
+            android:focusable="true"
+            android:gravity="start|center_vertical"
+            android:paddingHorizontal="22dp"
+            android:text="⚙   Settings"
+            android:textAllCaps="false"
+            android:textColor="@color/text"
+            android:textSize="19sp" />
+
+        <Space android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="SHQIPTARËT\nKUDO NË BOTË"
+            android:textColor="@color/muted"
+            android:textSize="11sp"
+            android:letterSpacing="0.24" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingHorizontal="18dp">
+
+        <EditText
+            android:id="@+id/searchInput"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:background="@drawable/bg_input"
+            android:drawableStart="@android:drawable/ic_menu_search"
+            android:drawablePadding="12dp"
+            android:hint="Search channels..."
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:textColor="@color/text"
+            android:textColorHint="@color/muted"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Channel Categories"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:scrollbars="none">
+            <LinearLayout
+                android:id="@+id/categoryRow"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/listTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="All Channels"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/channelGrid"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingTop="10dp"
+            android:paddingBottom="18dp"
+            android:scrollbars="vertical" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/detailsPanel"
+        android:layout_width="390dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_panel"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="@drawable/bg_card">
+            <ImageView
+                android:id="@+id/detailImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_margin="12dp"
+                android:background="@drawable/bg_input"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:text="● LIVE"
+                android:textColor="@color/text"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/detailFallback"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="SHQIP TV"
+                android:textColor="#55FFFFFF"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/detailName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Select a channel"
+            android:textColor="@color/text"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/detailCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Live TV"
+            android:textColor="@color/muted"
+            android:textSize="17sp" />
+        <TextView
+            android:id="@+id/detailNow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="Press OK to watch full screen"
+            android:textColor="@color/text"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/detailHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Use ↑ ↓ ← → for fast TV navigation"
+            android:textColor="@color/muted"
+            android:textSize="15sp" />
+
+        <Space android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/fullscreenButton"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:background="@drawable/bg_nav"
+            android:focusable="true"
+            android:text="⛶  Full Screen"
+            android:textAllCaps="false"
+            android:textColor="@color/text"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>
