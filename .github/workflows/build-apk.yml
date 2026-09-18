@@ -24,14 +24,24 @@ jobs:
 
       - name: Extract project
         run: |
+          rm -rf extracted
           mkdir extracted
           unzip -q ShqipTV-GitHub-Project.zip -d extracted
 
+      - name: Configure AndroidX
+        run: |
+          echo "android.useAndroidX=true" > extracted/ShqipTV/gradle.properties
+          echo "android.enableJetifier=true" >> extracted/ShqipTV/gradle.properties
+          echo "org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8" >> extracted/ShqipTV/gradle.properties
+          echo "kotlin.code.style=official" >> extracted/ShqipTV/gradle.properties
+
       - name: Build APK
-        run: gradle -p extracted/ShqipTV :app:assembleDebug --no-daemon
+        run: |
+          gradle -p extracted/ShqipTV :app:assembleDebug --no-daemon
 
       - name: Save APK
         uses: actions/upload-artifact@v4
         with:
           name: Shqip-TV-APK
           path: extracted/ShqipTV/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
