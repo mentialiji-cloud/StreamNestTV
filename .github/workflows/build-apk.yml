@@ -1,21 +1,15 @@
-name: Build TV Shqip APK
+name: Build Shqip TV APK
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Get project
+      - name: Download repository
         uses: actions/checkout@v4
-
-      - name: Unpack TV Shqip project
-        run: unzip -q TV-Shqip-v0.3-source.zip -d project
 
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -28,12 +22,16 @@ jobs:
         with:
           gradle-version: "8.9"
 
-      - name: Build TV Shqip APK
-        working-directory: project
-        run: gradle assembleDebug
+      - name: Extract project
+        run: |
+          mkdir extracted
+          unzip -q ShqipTV-GitHub-Project.zip -d extracted
 
-      - name: Save TV Shqip APK
+      - name: Build APK
+        run: gradle -p extracted/ShqipTV :app:assembleDebug --no-daemon
+
+      - name: Save APK
         uses: actions/upload-artifact@v4
         with:
-          name: TV-Shqip-v0.3
-          path: project/app/build/outputs/apk/debug/app-debug.apk
+          name: Shqip-TV-APK
+          path: extracted/ShqipTV/app/build/outputs/apk/debug/app-debug.apk
